@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import edu.drexel.cs575_jrw.medicalportal.entity.Appointment;
+import edu.drexel.cs575_jrw.medicalportal.entity.BillItem;
 import edu.drexel.cs575_jrw.medicalportal.entity.Doctor;
 import edu.drexel.cs575_jrw.medicalportal.entity.Patient;
 
@@ -173,6 +174,30 @@ public class RequestBean {
         }   
          
         return returnCode;
+    }
+    
+    public void createBillItem(Integer inBillItemId, String inStatus,
+                    Integer inPatientId, Date inPaymentDueDate,
+                    double inAmount, String inDescription)
+    {
+        try
+        {
+        BillItem newBillItem = new BillItem(inBillItemId, inStatus, inPatientId, inPaymentDueDate, inAmount, inDescription);
+        
+        em.persist(newBillItem);
+        
+        }
+        catch(Exception e)
+        {
+            logger.log(Level.WARNING, "Couldn''t create new Bill Item: {0}", e.getMessage());
+        }
+    }
+    
+    public List<BillItem> getOutstandingBillItemsByPatientId(Integer inPatientId)
+    {
+        List<BillItem> billItems = (List<BillItem>) em.createNamedQuery("findAllBillItemsByPatientId").setParameter("inPatientId", inPatientId).getResultList();
+        
+        return billItems;
     }
 
 }

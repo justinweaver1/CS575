@@ -30,6 +30,12 @@ public class ConfigBean {
         request.createAppointment(11, "BBILLIARD", -1, "A", new Date(2015, 1, 3, 16, 30));
         request.createAppointment(16, "JSMITH", -1, "A", new Date(2014, 12, 28, 10, 30));
         request.createAppointment(20, "JSMITH", 6, "S", new Date(2014, 12, 29, 14, 00));
+        
+        /* Bill Item Creation */
+        
+        request.createBillItem(101, "O", 6, new Date(2015, 1, 31), 13.75, "Normal medical check up.");
+        request.createBillItem(102, "O", 6, new Date(2015, 1, 31), 100.25, "Hearing exam.");
+        request.createBillItem(103, "O", 6, new Date(2015, 1, 31), 60.43, "Flu shot");
 
     }
 
