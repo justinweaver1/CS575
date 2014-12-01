@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/my_appointments_template.xhtml">
+        <ui:define name="title">Medical Portal: Available Appointments</ui:define>
+        <ui:define name="body">
+
+        </ui:define>
+ 
+        <ui:define name="myAppointmentsTable">
+            <h:dataTable
+                var="myAppointment"
+                summary="Table of my appointments"
+                value="#{appointmentManager.myAppointments}"
+                rules="all"
+                cellpadding="5">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Date" />
+                    </f:facet>
+                    <h:outputText value="#{myAppointment.appointmentDate}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Doctor" />
+                    </f:facet>
+                    <h:outputText value="#{myAppointment.doctorHandle}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Actions" />
+                    </f:facet>
+                    <h:form>
+                        <h:commandLink value="Cancel" actionListener="#{appointmentManager.cancelAppointment}" action="cancel">
+                            <f:param name="cancelAppointmentId" id="cancelAppointmentId" value="#{myAppointment.appointmentId}" />
+                        </h:commandLink>
+                        <h:form>
+                    </h:form>
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <h:link outcome="index" value="Go Home" />
+        </ui:define>
+    </ui:composition>
+    
+   
+    
+</html>
+
