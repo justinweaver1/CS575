@@ -5,21 +5,21 @@
  */
 package edu.drexel.cs575_jrw.medicalportal.web;
 
+import edu.drexel.cs575_jrw.medicalportal.ejb.RequestBean;
 import edu.drexel.cs575_jrw.medicalportal.entity.PatientPrescription;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author Justin
- */
 @WebService(serviceName = "PatientPrescriptionService")
 @Stateless()
 public class PatientPrescriptionService {
 
+    @EJB
+    private RequestBean request;
 
     /**
      * Web service operation
@@ -45,8 +45,10 @@ public class PatientPrescriptionService {
      */
     @WebMethod(operationName = "getPatientPrescriptions")
     public List<PatientPrescription> getPatientPrescriptions(@WebParam(name = "patientId") int patientId) {
-        //TODO write your implementation code here:
-        return null;
+        
+        List<PatientPrescription> patientPrescriptions = request.getPrescriptionsByPatientId(patientId);
+        
+        return patientPrescriptions;
     }
 
     /**

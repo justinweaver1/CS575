@@ -1,6 +1,5 @@
 package edu.drexel.cs575_jrw.medicalportal.entity;
 
-
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;

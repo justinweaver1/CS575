@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.TIMESTAMP;

@@ -1,7 +1,6 @@
 package edu.drexel.cs575_jrw.medicalportal.web;
 
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -14,19 +13,14 @@ import javax.faces.component.UIParameter;
 import javax.faces.event.ActionEvent;
 
 import edu.drexel.cs575_jrw.medicalportal.entity.Appointment;
-import edu.drexel.cs575_jrw.medicalportal.entity.Doctor;
 
-/**
- *
- * @author ian
- */
 @ManagedBean
 @SessionScoped
 public class AppointmentManager implements Serializable{
     private static final long serialVersionUID = 2149999151318489373L;
     @EJB
     private RequestBean request;
-    private static final Logger logger = Logger.getLogger("order.web.AppointmentManager");
+    private static final Logger logger = Logger.getLogger("medicalportal.web.AppointmentManager");
     private List<Appointment> appointments;
 
     /**

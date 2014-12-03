@@ -1,11 +1,6 @@
 package edu.drexel.cs575_jrw.medicalportal.ejb;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.time.LocalDateTime;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +13,7 @@ import edu.drexel.cs575_jrw.medicalportal.entity.Appointment;
 import edu.drexel.cs575_jrw.medicalportal.entity.BillItem;
 import edu.drexel.cs575_jrw.medicalportal.entity.Doctor;
 import edu.drexel.cs575_jrw.medicalportal.entity.Patient;
+import edu.drexel.cs575_jrw.medicalportal.entity.PatientPrescription;
 
 
 @Stateful
@@ -199,5 +195,34 @@ public class RequestBean {
         
         return billItems;
     }
+    
+    public void createPatientPrescription(int inPrescriptionId,
+            int inPatientId, 
+            String inPrescriptionName,
+            String inStatus,
+            Date inLastRefilled,  
+            boolean inEligableForRefill)
+    {
+        try
+        {
+            PatientPrescription newPrescription = new PatientPrescription(inPrescriptionId, inPatientId,
+                                                                      inPrescriptionName, inStatus,
+                                                                      inLastRefilled, inEligableForRefill);
+            
+            em.persist(newPrescription);
+        }
+        catch(Exception e)
+        {
+            logger.log(Level.WARNING, "Couldn''t create new patient prescription: {0}", e.getMessage());
+        }
+    }
+        
+    public List<PatientPrescription> getPrescriptionsByPatientId(Integer inPatientId)
+    {
+        List<PatientPrescription> patientPrescriptions = (List<PatientPrescription>) em.createNamedQuery("findPrescriptionsByPatientId").setParameter("patientId", inPatientId).getResultList();
+        
+        return patientPrescriptions;
+    }
+    
 
 }

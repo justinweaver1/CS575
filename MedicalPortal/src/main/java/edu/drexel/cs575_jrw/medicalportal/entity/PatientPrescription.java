@@ -17,7 +17,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
         name="findPrescriptionsByPatientId",
         query="SELECT DISTINCT p " +
               "FROM PatientPrescription p " +
-              "WHERE p.patientId = :id "
+              "WHERE p.patientId = :patientId "
     )
 })
 public class PatientPrescription implements java.io.Serializable {

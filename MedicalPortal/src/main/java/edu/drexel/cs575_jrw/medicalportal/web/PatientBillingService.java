@@ -10,10 +10,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author Justin
- */
 @WebService(serviceName = "PatientBillingService")
 @Stateless()
 public class PatientBillingService {

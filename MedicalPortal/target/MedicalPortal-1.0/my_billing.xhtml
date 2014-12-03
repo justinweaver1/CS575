@@ -15,7 +15,7 @@
             <h:dataTable
                 var="myBillItem"
                 summary="Table of my appointments"
-                value="#{patientBillingService.outstandingBillItems}"
+                value="#{billingInfoManager.getOutstandingBillItemsForPatient(6)}"
                 rules="all"
                 cellpadding="5">
                 <h:column>
@@ -29,12 +29,18 @@
                         <h:outputText value="Item Description" />
                     </f:facet>
                     <h:outputText value="#{myBillItem.description}" />
+                    <f:facet name="footer">
+                        <h:outputText value="Total Bill:" style="font-weight:bold" />
+                    </f:facet>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Price" />
                     </f:facet>
                     <h:outputText value="#{myBillItem.amount}" />
+                    <f:facet name="footer">
+                        <h:outputText value="#{billingInfoManager.getOutstandingBillItemsTotalForPatient(6)}" style="font-weight:bold" />
+                    </f:facet>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
@@ -47,6 +53,7 @@
                         <h:form>
                     </h:form>
                     </h:form>
+                    
                 </h:column>
             </h:dataTable>
             <br/>

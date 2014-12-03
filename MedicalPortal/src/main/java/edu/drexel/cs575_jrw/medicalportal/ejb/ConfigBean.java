@@ -1,6 +1,5 @@
 package edu.drexel.cs575_jrw.medicalportal.ejb;
 import java.util.Date;
-import java.time.Month;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
@@ -36,6 +35,12 @@ public class ConfigBean {
         request.createBillItem(101, "O", 6, new Date(2015, 1, 31), 13.75, "Normal medical check up.");
         request.createBillItem(102, "O", 6, new Date(2015, 1, 31), 100.25, "Hearing exam.");
         request.createBillItem(103, "O", 6, new Date(2015, 1, 31), 60.43, "Flu shot");
+        
+        
+        /* Prescription Creation */
+        
+        request.createPatientPrescription(300, 6, "Ibuprophen", "F", new Date(2014, 9, 20, 12, 00), true);
+        request.createPatientPrescription(305, 6, "Zoloft", "F", new Date(2014, 9, 15, 12, 00), false);
 
     }
 
